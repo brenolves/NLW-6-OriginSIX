@@ -18,18 +18,24 @@ for (const link of links) {
 }
 
 // Mudar o header da página quando der scroll //
-const header = document.querySelector('#header')
-const navHeight = header.offsetHeight
 
-window.addEventListener('scroll', function () {
+function changeHeaderWhenScroll() {
+  const header = document.querySelector('#header')
+  const logo = document.querySelector('#header a.logo')
+  const navHeight = header.offsetHeight
+
   if (window.scrollY >= navHeight) {
     // Scroll é maior que a altura do header
     header.classList.add('scroll')
+    logo.classList.add('logo-alt')
+    backToTopButton.classList.add('show')
   } else {
     // Menor que a altura do header
     header.classList.remove('scroll')
+    logo.classList.remove('logo-alt')
+    backToTopButton.classList.remove('show')
   }
-})
+}
 
 // Testimonials Carousel Slider Swiper //
 
@@ -56,7 +62,37 @@ scrollReveal.reveal(
   #about .image, #about .text,
   #services header, #services .card,
   #testimonials header, #testimonials .testimonials,
-  #contact .text, #contact .links
+  #contact .text, #contact .links,
+  footer .brand, footer .social
   `,
   { interval: 100 }
 )
+
+// Botão para voltar pro topo //
+const backToTopButton = document.querySelector('.back-to-top')
+
+function BackToTop() {
+  const home = document.querySelector('#home')
+  const homeHeight = home.offsetHeight
+
+  if (window.scrollY >= homeHeight) {
+    // Scroll é maior que a altura da home
+    backToTopButton.classList.add('show')
+  } else {
+    // Menor que a altura da home
+    backToTopButton.classList.remove('show')
+  }
+
+  if (window.scrollY >= 3950) {
+    //
+    backToTopButton.classList.add('scroll')
+  } else {
+    backToTopButton.classList.remove('scroll')
+  }
+}
+
+// When Scrolling //
+window.addEventListener('scroll', function () {
+  changeHeaderWhenScroll()
+  BackToTop()
+})
