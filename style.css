@@ -153,16 +153,6 @@ body {
   color: var(--base-color);
 }
 
-#header.scroll nav ul li a:hover,
-#header.scroll nav ul li a.active {
-  color: var(--text-color-light);
-}
-
-#header.scroll nav ul li a::after,
-#header.scroll nav ul li a.active::after {
-  background: var(--text-color-light);
-}
-
 /* LOGO */
 
 .logo {
@@ -608,6 +598,16 @@ footer .social a:hover {
 
   main {
     margin-top: calc(var(--header-height));
+  }
+  /* HEADER */
+  #header.scroll nav ul li a:hover,
+  #header.scroll nav ul li a.active {
+    color: var(--text-color-light);
+  }
+
+  #header.scroll nav ul li a::after,
+  #header.scroll nav ul li a.active::after {
+    background: var(--text-color-light);
   }
   /* HOME */
   #home .container {
